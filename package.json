@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "*\"Discover the most bizarre and unexpected pizza toppings from around the world! Vote, comment, and share your weirdest creations.\"*",
   "main": "index.js",
+  "type":"module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
