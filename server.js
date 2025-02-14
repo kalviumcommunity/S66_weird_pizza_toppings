@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const router = require('./routes/userRoutes')
-const connectDB = require('./config/db')
+const connectdb = require('./config/db')
 const app = express()
 
 const port = process.env.PORT || 3000
@@ -16,7 +16,7 @@ app.get('/ping',(req,res)=>{
 
 app.listen(port,async()=>{
     try{
-        await connectDB()
+        await connectdb()
         console.log(`Server is running on http://localhost:${port}`)
     }catch(error){
         console.error(error.message)
