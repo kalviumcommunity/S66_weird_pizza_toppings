@@ -1,0 +1,19 @@
+meta {
+  name: CREATE User
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:3000/api
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username":"hello",
+    "email":"world@gmail.com",
+    "password":"helloworld"
+  }
+}
