@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const router = require('./routes/userRoutes')
+const userRoutes = require('./routes/userRoutes')
 const connectdb = require('./config/db')
 const app = express()
 
@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000
 
 app.use(express.json())
 app.use(cors())
-app.use('/api',router)
+app.use('/api',userRoutes)
 
 app.get('/ping',(req,res)=>{
     res.send('pong')
