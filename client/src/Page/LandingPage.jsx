@@ -2,6 +2,7 @@ import React from 'react';
 import { ChefHat, Pizza, Star, Users, ArrowRight, Instagram, Twitter, Facebook } from 'lucide-react';
 import { motion } from 'framer-motion';
 import PizzaTopping from '../components/PizzaTopping'; 
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -18,6 +19,14 @@ const staggerChildren = {
 };
 
 const LandingPage = () => {
+  const navigate = useNavigate();
+  
+  const handleNavigation = (item) => {
+    if (item.toLowerCase() === 'community') {
+      navigate('/dashboard');
+    }
+  };
+
   const dummyData = {
     name: "The Banana Split Supreme",
     description: "Banana slices, chocolate sauce, and whipped cream on a pizza. Yes, really!",
@@ -44,11 +53,11 @@ const LandingPage = () => {
             <span className="text-xl font-bold text-gray-800">Weird Pizza</span>
           </motion.div>
           <div className="hidden md:flex space-x-8">
-            {['Home', 'Toppings', 'About', 'Contact'].map((item, index) => (
+            {['Home', 'Toppings', 'Community', 'Contact'].map((item, index) => (
               <motion.a
                 key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-gray-600 hover:text-orange-500"
+                onClick={() => handleNavigation(item)}
+                className="text-gray-600 hover:text-orange-500 cursor-pointer"
                 whileHover={{ scale: 1.1 }}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -132,7 +141,7 @@ const LandingPage = () => {
             {[
               { icon: ChefHat, title: "Master Chefs", desc: "Our expert chefs craft the perfect balance of weird and wonderful." },
               { icon: Star, title: "Premium Quality", desc: "Only the finest and most unusual ingredients make it onto our pizzas." },
-              { icon: Users, title: "Community Loved", desc: "Join thousands of adventurous pizza lovers in our community." }
+              { icon: Users, title: "Community", desc: "Join thousands of adventurous pizza lovers in our community." }
             ].map((feature, index) => (
               <motion.div 
                 key={index}
